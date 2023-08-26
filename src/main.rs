@@ -11,8 +11,10 @@ fn main(){
     println!("Hello, {:?}!", person);
     filter_int(|x| x > 5);
 
-    (0..10).for_each(|x| println!("{}", x));
-    (0..10).filter(|x| x < &5);
+    (0..10).for_each(|x| print!("{}", x));
+    println!();
+    (0..10).filter(|x| x < &5).for_each(|x| print!("{}", x));
+    println!();
 }
 
 fn filter_int<Func: Fn(i32) -> bool> (call_back: Func) {
