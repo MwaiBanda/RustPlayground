@@ -3,6 +3,7 @@ struct Person {
     name: String,
     age: u8,
 }
+
 fn main(){
     let person = Person {
         name: String::from("John"),
@@ -13,8 +14,10 @@ fn main(){
 
     (0..10).for_each(|x| print!("{}", x));
     println!();
-    (0..10).filter(|x| x < &5).for_each(|x| print!("{}", x));
+    (0..10).filter(|x| x < &5).map(|x| x + 1).for_each(|x| print!("{}", x));
     println!();
+    println!("{}", (0..10).filter(|x| x < &5).map(|x| x + 1).reduce(|a,b| a + b).unwrap_or(0));
+
 }
 
 fn filter_int<Func: Fn(i32) -> bool> (call_back: Func) {
